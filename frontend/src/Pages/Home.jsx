@@ -12,6 +12,11 @@ const Home = () => {
   return (
     <div>
     {/* Teepee Start */}
+      <h1 className='bg-justbuy-purple text-white'>Use bg-justbuy-purple for our purple variant</h1>
+      <h1 className='bg-justbuy-black text-white'>Use bg-justbuy-black for our black variant</h1>
+      <h1 className='bg-justbuy-brown text-white'>Use bg-justbuy-brown for our brown variant</h1>
+      <h1 className='bg-justbuy-star text-white'>Use bg-justbuy-star for our star variant</h1>
+
       <NavBar/>
       <HomeSlider/>
       <FlashSales/>
