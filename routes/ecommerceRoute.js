@@ -3,7 +3,8 @@ const express = require("express");
 const { Users } = require('../model/user');
 const { Orders } = require('../model/order');
 const { Tokens } = require('../model/token');
-const { Products } = require('../model/product'); 
+const { Products } = require('../model/product');
+const { Categories } = require('../model/categorie');
 const Joi = require("joi");
 const bodyParse = require("body-parser");
 const router = express.Router();
@@ -69,8 +70,6 @@ router.get('/logout', bodyParse.json(), async (req, res) => {
 
         });
     }
-
-
 })
 
 
@@ -104,8 +103,8 @@ router.get('/getOrderById', requireAuth, bodyParse.json(), async (req, res) => {
             });
 
         } catch (error) {
-            return res.status(200).send({
-                responseCode: "00",
+            return res.status(400).send({
+                responseCode: "96",
                 responseMessage: "Failed to retrieve " + _id,
                 data: null
 
@@ -115,6 +114,30 @@ router.get('/getOrderById', requireAuth, bodyParse.json(), async (req, res) => {
     }
 
 })
+
+//Get Category 
+router.get('/getAllCategory',  bodyParse.json(), async (req, res) => {
+        try {
+            const items = await Categories.find({ });
+
+            return res.status(200).send({
+                responseCode: "00",
+                responseMessage: "Categories Retrieved successfully",
+                data: items
+            });
+
+        } catch (error) {
+            return res.status(400).send({
+                responseCode: "96",
+                responseMessage: "Failed to retrieve Categories",
+                data: null
+
+            });
+        }
+
+})
+
+
 // getAllUserOrder
 router.get('/getAllUserOrder', requireAuth, bodyParse.json(), async (req, res) => {
     const Schema = Joi.object({
@@ -214,66 +237,6 @@ router.get('/FilterUserOrderByPrice', requireAuth, bodyParse.json(), async (req,
 
     }
 })
-
-
-// Get customer orders with pagination getOrderPaginated
-router.get('/getOrderPaginated', requireAuth, bodyParse.json(), async (req, res) => {
-    const Schema = Joi.object({
-        userId: Joi.string().required().min(3),
-        reqPage: Joi.string(),
-    });
-    //check error and return error
-    const { error } = Schema.validate(req.body);
-
-    if (error) {
-        return res.status(400).send({
-            responseCode: "96",
-            responseMessage: error.details[0].message,
-            data: null
-        });
-
-    }
-    else {
-        //check if id exists
-        let { userId, reqPage } = req.body;
-
-        //cehck if no page is sent by default
-        console.log(reqPage);
-        if (!reqPage){
-            page = 1;
-        
-        }
-        else{
-            page = parseInt(reqPage);
-        }
-        const perPage = 5;
-
-        try {
-            const orders = await Orders.find({ userId })
-                .skip((page - 1) * perPage)
-                .limit(perPage); //paginate
-
-
-            return res.status(200).send({
-                responseCode: "00",
-                responseMessage: "Order Retrieved successfully",
-                data: orders
-            });
-
-            res.status(200).json(orders);
-        } catch (error) {
-            return res.status(400).send({
-                responseCode: "96",
-                responseMessage: "Order can not be Retrieved",
-                data: null
-            });
-            
-        }
-
-    }
-})
-
-
 
 
 //createOrders Stack Api
