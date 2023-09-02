@@ -4,6 +4,7 @@ const { Users } = require('../model/user');
 const { Orders } = require('../model/order');
 const { Tokens } = require('../model/token');
 const { Products } = require('../model/product');
+const { Slides } = require('../model/slide');
 const { Categories } = require('../model/categorie');
 const Joi = require("joi");
 const bodyParse = require("body-parser");
@@ -134,6 +135,29 @@ router.get('/getAllCategory',  bodyParse.json(), async (req, res) => {
 
             });
         }
+
+})
+
+
+//Get slide 
+router.get('/getAllSlide', bodyParse.json(), async (req, res) => {
+    try {
+        const items = await Slides.find({ slideStatus: "show"});
+ 
+        return res.status(200).send({
+            responseCode: "00",
+            responseMessage: "Slides Retrieved successfully",
+            data: items
+        });
+
+    } catch (error) {
+        return res.status(400).send({
+            responseCode: "96",
+            responseMessage: "Failed to retrieve Categories",
+            data: null
+
+        });
+    }
 
 })
 
