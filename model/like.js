@@ -18,7 +18,6 @@ const likeSchema = new mongoose.Schema({
     },
     createdAt: {
         type: Date,
-        expires: '2d', // This sets the expiry date for 2 days
         default: Date.now
     },
     dateUpdated: {
