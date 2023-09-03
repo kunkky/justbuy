@@ -56,7 +56,6 @@ const addToken = async (token, userData) => {
 //function that splits into array
 // Function to split a string with a comma if it contains a comma, otherwise return an empty array
 function splitter(inputString) {
-console.log(inputString);
     if (inputString.includes(',')) {
         return inputString.split(',').map(item => item.trim());
     } else {
