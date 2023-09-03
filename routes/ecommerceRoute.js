@@ -53,6 +53,17 @@ const addToken = async (token, userData) => {
     }
 };
 
+//function that splits into array
+// Function to split a string with a comma if it contains a comma, otherwise return an empty array
+function splitter(inputString) {
+console.log(inputString);
+    if (inputString.includes(',')) {
+        return inputString.split(',').map(item => item.trim());
+    } else {
+        return [];
+    }
+}
+
 //default Get
 router.get("/", (req, res) => {
     return res.status(200).send({
@@ -443,12 +454,12 @@ router.put('/createProduct', requireAdminAuth, bodyParse.json(), async (req, res
         discountRate: Joi.string().max(20).required(),
         productRating: Joi.string().max(20).required(),
         productCategories: Joi.string().required(),
-        numberSold: Joi.string().max(20).required(),
+        numberSold: Joi.number().max(20).required(),
         productImages: Joi.string().required(),
         productDetails: Joi.string().required(),
         owner_Id: Joi.string().required(),
-        productColors: Joi.string().required(),
-        productSize: Joi.string().required(),
+        productColors: Joi.string().allow(''),
+        productSize: Joi.string().allow('').required(),
         productBrand: Joi.string().required(),
     });
     //check error and return error
@@ -462,12 +473,15 @@ router.put('/createProduct', requireAdminAuth, bodyParse.json(), async (req, res
 
     }
     const { productName, productPrice, discountRate, productRating, productCategories, numberSold, productImages, productDetails, owner_Id, productColors, productSize, productBrand  } = req.body;
-
+    //turn categories, images, colors and size to array
+    const productCategoriesArr = splitter(productCategories);
+    const productImagesArr = splitter(productImages);
+    const productColorsArr = splitter(productColors);
+    const productSizeArr = splitter(productSize);
     try {
             //save in database
-
             const newProduct = new Products({
-                productName, productPrice, discountRate, productRating, productCategories, numberSold, productImages, productDetails, owner_Id, productColors, productSize, productBrand,
+                productName, productPrice, discountRate, productRating, productCategories: productCategoriesArr, numberSold, productImages: productImagesArr, productDetails, owner_Id, productColors: productColorsArr, productSize: productSizeArr, productBrand,
                 dateCreated: new Date().toJSON(), dateUpdated: new Date().toJSON()
             });
 
@@ -499,6 +513,7 @@ router.put('/registeration', bodyParse.json(), async (req, res) => {
         address: Joi.string().min(2).max(50).required(),
         email: Joi.string().min(2).max(20).required(),
         fullname: Joi.string().min(2).required(),
+        userType: Joi.string().required(),
         password: Joi.string().min(8).required().regex(strongPasswordRegex).messages({
             'string.pattern.base': 'Password must include at least one uppercase letter, one lowercase letter, and one digit',
         }),
@@ -514,7 +529,7 @@ router.put('/registeration', bodyParse.json(), async (req, res) => {
         });
 
     }
-    const { address, fullname, email, password, phone} = req.body;
+    const { address, fullname, email, password, phone, userType } = req.body;
 
     //hashe user password before sending to db
     const salt = await bcrypt.genSalt(10);
@@ -527,7 +542,7 @@ router.put('/registeration', bodyParse.json(), async (req, res) => {
             //save in database
             const newUser = new Users({
                 address, fullname, email
-                , hashedPassword, phone,
+                , hashedPassword, phone, userType,
                 dateCreated: new Date().toJSON(), dateUpdated: new Date().toJSON()
             });
 
@@ -591,6 +606,7 @@ router.post('/login', bodyParse.json(), async (req, res) => {
 
     }
     const { email, password } = req.body;
+    console.log(email);
     try {
         //check if data exist
         const existUser = await Users.findOne({ email });
@@ -650,6 +666,8 @@ router.post('/login', bodyParse.json(), async (req, res) => {
 
     }
 })
+
+
 
 
 module.exports.ecommerceRoute = router;

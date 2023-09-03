@@ -3,7 +3,6 @@ const productSchema = new mongoose.Schema({
     productName: {
         type: String,
         minlength: 3,
-        unique: true,
         required: true
     },
     productPrice: {
@@ -17,10 +16,9 @@ const productSchema = new mongoose.Schema({
     productRating: {
         type: Number,
         default: 1
-
     },
     productCategories: {
-        type: String,
+        type: [String],
         required: true
     },
     productAvalabilityStatus: {
@@ -33,7 +31,7 @@ const productSchema = new mongoose.Schema({
         default: 0
     },
     productImages: {
-        type: String,
+        type: [String],
         required: true
     },
     productDetails: {
@@ -45,12 +43,12 @@ const productSchema = new mongoose.Schema({
         required: true
     },
     productColors: {
-        type: String,
-        required: true
+        type: [String],
+        default:[]
     },
     productSize: {
-        type: String,
-        required: true
+        type: [String],
+        default:[]
     },
     productBrand: {
         type: String,
