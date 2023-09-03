@@ -15,8 +15,8 @@ const productSchema = new mongoose.Schema({
         required: true
     },
     productRating: {
-        type: String,
-        default: '1'
+        type: Number,
+        default: 1
 
     },
     productCategories: {
@@ -29,8 +29,8 @@ const productSchema = new mongoose.Schema({
 
     },
     numberSold: {
-        type: String,
-        default: '0'
+        type: Number,
+        default: 0
     },
     productImages: {
         type: String,
