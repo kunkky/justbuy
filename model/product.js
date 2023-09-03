@@ -10,9 +10,14 @@ const productSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    productRate: {
+    discountRate: {
         type: String,
         required: true
+    },
+    productRating: {
+        type: String,
+        default: '1'
+
     },
     productCategories: {
         type: String,
@@ -20,17 +25,22 @@ const productSchema = new mongoose.Schema({
     },
     productAvalabilityStatus: {
         type: String,
-        required: true
+        default:'available'
+
     },
     numberSold: {
         type: String,
-        required: true
+        default: '0'
     },
     productImages: {
         type: String,
         required: true
     },
     productDetails: {
+        type: String,
+        required: true
+    },
+    owner_Id: {
         type: String,
         required: true
     },
@@ -50,7 +60,6 @@ const productSchema = new mongoose.Schema({
         type: String,
         default: new Date()
     },
-
     dateUpdated: {
         type: String,
         default: new Date()

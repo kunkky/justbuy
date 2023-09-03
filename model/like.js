@@ -1,18 +1,19 @@
 const mongoose = require('mongoose');
-const tokenSchema = new mongoose.Schema({
+const likeSchema = new mongoose.Schema({
     user_id: {
         type: String,
         minlength: 3,
         unique: true,
         required: true
     },
-    userType: {
+    product_id: {
         type: String,
+        minlength: 3,
+        unique: true,
         required: true
     },
-    token: {
+    status: {
         type: String,
-        minlength: 2,
         required: true
     },
     createdAt: {
@@ -28,5 +29,5 @@ const tokenSchema = new mongoose.Schema({
 
 })
 
-const Tokens = mongoose.model('tokens', tokenSchema);
-module.exports.Tokens = Tokens
+const Likes = mongoose.model('likes', likeSchema);
+module.exports.Likes = Likes

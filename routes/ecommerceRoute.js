@@ -1,22 +1,32 @@
 const express = require("express");
-
+//models
 const { Users } = require('../model/user');
 const { Orders } = require('../model/order');
 const { Tokens } = require('../model/token');
 const { Products } = require('../model/product');
+const { Likes } = require('../model/like');
 const { Slides } = require('../model/slide');
 const { Categories } = require('../model/categorie');
+//models ends
+
 const Joi = require("joi");
 const bodyParse = require("body-parser");
 const router = express.Router();
 const bcrypt = require('bcrypt');
 const jwt = require("jsonwebtoken");
+//auth Middleware
 const requireAuth = require("../middleware/authMiddleware");
+const requireAdminAuth = require("../middleware/AdminAuthMiddleware");
+//auth Middleware ends
+
+//Get secret keys fromenv
+const dotenv = require("dotenv");
+dotenv.config({ path: "config.env" })
+const signature = process.env.SIGNATURE || "dummyenvSIgnature"
 
 
 
 const createToken = (id) => {
-    let signature = "SoftamosChallenge_gadjjajcabdhcjadbajkvhcanhjc";
     const expDate = 3 * 24 * 60 * 60;
     return token = jwt.sign({ id }, signature, { expiresIn: expDate });
 
@@ -31,6 +41,7 @@ const addToken = async (token, userData) => {
         const newToken = new Tokens({
             user_id: userData._id,
             token: token,
+            userType: userData.userType,
         });
 
         // Save token to the database
@@ -47,7 +58,7 @@ router.get("/", (req, res) => {
     return res.status(200).send({
         responseCode: "00",
         responseMessage: "You are connected Ecommerce app api",
-        data: "no data Sent"
+        data: signature
     });
 })
  
@@ -263,7 +274,7 @@ router.get('/FilterUserOrderByPrice', requireAuth, bodyParse.json(), async (req,
 })
 
 
-//createOrders Stack Api
+//createOrders Api
 router.put('/createOrders', requireAuth, bodyParse.json(), async (req, res) => {
     const Schema = Joi.object({
         productId: Joi.string().min(3).max(20).required(),
@@ -314,7 +325,7 @@ router.put('/createOrders', requireAuth, bodyParse.json(), async (req, res) => {
 })
 
 
-//delete Post 
+//delete Order 
 router.delete('/deleteOrder', requireAuth, bodyParse.json(), async (req, res) => {
     const Schema = Joi.object({
         _id: Joi.string()
@@ -423,11 +434,68 @@ router.put('/updateOrderById', requireAuth, bodyParse.json(), async (req, res) =
     }
 })
 
+
+//createProduct Api
+router.put('/createProduct', requireAdminAuth, bodyParse.json(), async (req, res) => {
+    const Schema = Joi.object({
+        productName: Joi.string().min(3).max(20).required(),
+        productPrice: Joi.string().max(20).required(),
+        discountRate: Joi.string().max(20).required(),
+        productRating: Joi.string().max(20).required(),
+        productCategories: Joi.string().required(),
+        numberSold: Joi.string().max(20).required(),
+        productImages: Joi.string().required(),
+        productDetails: Joi.string().required(),
+        owner_Id: Joi.string().required(),
+        productColors: Joi.string().required(),
+        productSize: Joi.string().required(),
+        productBrand: Joi.string().required(),
+    });
+    //check error and return error
+    const { error } = Schema.validate(req.body);
+    if (error) {
+        return res.status(400).send({
+            responseCode: "96",
+            responseMessage: error.details[0].message,
+            data: null
+        });
+
+    }
+    const { productName, productPrice, discountRate, productRating, productCategories, numberSold, productImages, productDetails, owner_Id, productColors, productSize, productBrand  } = req.body;
+
+    try {
+            //save in database
+
+            const newProduct = new Products({
+                productName, productPrice, discountRate, productRating, productCategories, numberSold, productImages, productDetails, owner_Id, productColors, productSize, productBrand,
+                dateCreated: new Date().toJSON(), dateUpdated: new Date().toJSON()
+            });
+
+            await newProduct.save()
+            res.status(200).send({
+                responseCode: "00",
+                responseMessage: "new product created successfully",
+                data: newProduct
+            })
+
+
+    } catch (error) {
+        res.status(500).send({
+            responseCode: "96",
+            responseMessage: "Internal server error here" + error,
+            data: 'null' + error
+        })
+
+    }
+})
+
+
+
+
 //user registration
 router.put('/registeration', bodyParse.json(), async (req, res) => {
     const strongPasswordRegex = /(?=.*[A-Z])^(?=.*[a-z])^(?=.*[0-9])/;
-    const Schema = Joi.object({
-        
+    const Schema = Joi.object({        
         address: Joi.string().min(2).max(50).required(),
         email: Joi.string().min(2).max(20).required(),
         fullname: Joi.string().min(2).required(),
@@ -514,7 +582,6 @@ router.post('/login', bodyParse.json(), async (req, res) => {
     });
     //check error and return error
     const { error } = Schema.validate(req.body);
-
     if (error) {
         return res.status(400).send({
             responseCode: "96",

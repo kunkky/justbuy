@@ -6,7 +6,7 @@ const slideSchema = new mongoose.Schema({
         unique: true,
         required: true
     },
-    slidedetails: {
+    slideDetails: {
         type: String,
         required: true
     },
