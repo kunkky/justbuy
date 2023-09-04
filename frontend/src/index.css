@@ -3,3 +3,15 @@
 @tailwind utilities;
 
 
+.swiper-pagination-bullet.swiper-pagination-bullet-active{
+    border: 2px solid white;
+
+}
+.swiper-pagination-horizontal.swiper-pagination-bullets .swiper-pagination-bullet{
+    background: #660B7F;
+    width: 0.9rem;
+    height: 0.9rem;
+}
+.swiper-button-prev:after, .swiper-button-next:after{
+    color: #660B7F;
+}
