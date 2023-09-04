@@ -4,17 +4,18 @@ import Wishlist from './Assets/Wishlist.svg'
 import Cart from './Assets/Cart1.svg'
 import 'animate.css'
 const NavBar = () => {
+  const menuItems = [
+    ['Home'],
+    ['Contact'],
+    ['About'],
+    ['Signup']
+  ]
   return (
     <nav className=' flex justify-around pt-[1.5rem] h-[4rem] bg-white shadow-md'>
       <h1 className='font-bold text-[24px]'>Justbuy</h1>
       <ul className=' flex justify-evenly w-[20rem] text-[16px] pt-[0.5rem]'>
-        {[
-          ['Home'],
-          ['Contact'],
-          ['About'],
-          ['Signup']
-        ].map(([title])=>(
-          <li className='hover:border-b-2 hover:animate-[headShake_1s] border-justbuy-black cursor-pointer'> {title}</li>
+        {menuItems.map(([title])=>(
+          <li className='hover:border-b-2 hover:border-justbuy-purple hover:text-justbuy-purple hover:animate-[headShake_1s] border-justbuy-black cursor-pointer'> {title}</li>
         ))
         }
       </ul>
