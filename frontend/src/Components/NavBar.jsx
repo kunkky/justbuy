@@ -14,7 +14,7 @@ const NavBar = () => {
           ['About'],
           ['Signup']
         ].map(([title])=>(
-          <li className='hover:border-b-2 hover:animate-[headShake_1s] border-justbuy-black cursor-pointer'> {title}</li>
+          <li className='hover:border-b-2 hover:animate-[headShake_1s] hover:text-justbuy-purple border-justbuy-black cursor-pointer'> {title}</li>
         ))
         }
       </ul>
