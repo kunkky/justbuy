@@ -13,8 +13,8 @@ const NavBar = () => {
           ['Contact'],
           ['About'],
           ['Signup']
-        ].map(([title])=>(
-          <li className='hover:border-b-2 hover:animate-[headShake_1s] hover:text-justbuy-purple border-justbuy-black cursor-pointer'> {title}</li>
+        ].map(([title], index)=>(
+          <li key={index} className='hover:border-b-2 hover:animate-[headShake_1s] hover:text-justbuy-purple border-justbuy-black cursor-pointer'> {title}</li>
         ))
         }
       </ul>
