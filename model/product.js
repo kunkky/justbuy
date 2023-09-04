@@ -3,44 +3,52 @@ const productSchema = new mongoose.Schema({
     productName: {
         type: String,
         minlength: 3,
-        unique: true,
         required: true
     },
     productPrice: {
         type: String,
         required: true
     },
-    productRate: {
+    discountRate: {
         type: String,
         required: true
     },
+    productRating: {
+        type: Number,
+        default: 1
+    },
     productCategories: {
-        type: String,
+        type: [String],
         required: true
     },
     productAvalabilityStatus: {
         type: String,
-        required: true
+        default:'available'
+
     },
     numberSold: {
-        type: String,
-        required: true
+        type: Number,
+        default: 0
     },
     productImages: {
-        type: String,
+        type: [String],
         required: true
     },
     productDetails: {
         type: String,
         required: true
     },
-    productColors: {
+    owner_Id: {
         type: String,
         required: true
     },
+    productColors: {
+        type: [String],
+        default:[]
+    },
     productSize: {
-        type: String,
-        required: true
+        type: [String],
+        default:[]
     },
     productBrand: {
         type: String,
@@ -50,7 +58,6 @@ const productSchema = new mongoose.Schema({
         type: String,
         default: new Date()
     },
-
     dateUpdated: {
         type: String,
         default: new Date()
