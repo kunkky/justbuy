@@ -2,7 +2,9 @@ import React from 'react'
 
 const GeneralProduct = () => {
   return (
-    <div>GeneralProduct Dav</div>
+    <div>
+      {/* general product dav */}
+    </div>
   )
 }
 

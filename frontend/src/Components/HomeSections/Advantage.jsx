@@ -2,7 +2,7 @@ import React from 'react'
 
 const Advantage = () => {
   return (
-      <div>Advantage for ID</div>
+      <div></div>
   )
 }
 
