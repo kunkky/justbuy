@@ -81,7 +81,7 @@ const Footer = () => {
         </div>
       </div>
       </div>
-      <div className="text-justbuy-white text-center bg-justbuy-black p-2 text-sm">&#169; Copyright Rimel 2022. All right reserved</div>
+      <div className="text-justbuy-white text-center bg-justbuy-black p-2 text-sm border-t  border-t-slate-900">&#169; Copyright Rimel 2022. All right reserved</div>
 </div>
   )
 }
