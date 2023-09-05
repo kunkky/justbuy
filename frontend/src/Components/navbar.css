@@ -1,0 +1,5 @@
+li:hover{
+    cursor: pointer;
+    border-bottom: 1px solid;
+    transform: ease-in-out 1s;
+}

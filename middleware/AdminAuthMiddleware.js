@@ -5,7 +5,7 @@ const dotenv = require("dotenv");
 dotenv.config({ path: "config.env" })
 const signature = process.env.SIGNATURE || "dummyenvSIgnature"
 
-const requireAuth = async (req, res, next) => {
+const requireAdminAuth = async (req, res, next) => {
     const authHeader = req.headers.authorization;
 
     // Check if authorization header is missing
@@ -19,7 +19,7 @@ const requireAuth = async (req, res, next) => {
 
     try {
         // Check if token exists in the database
-        const queryToken = { token: JSON.parse(authHeader), userType:"user" }
+        const queryToken = { token: JSON.parse(authHeader), userType: "admin" }
         const tokens = await Tokens.find(queryToken);
         if (tokens.length === 0) {
             return res.status(401).json({
@@ -52,4 +52,4 @@ const requireAuth = async (req, res, next) => {
     }
 };
 
-module.exports = requireAuth;
+module.exports = requireAdminAuth;

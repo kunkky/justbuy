@@ -1,0 +1,26 @@
+{
+  "files": {
+    "main.css": "/static/css/main.d869aa0a.css",
+    "main.js": "/static/js/main.e733697e.js",
+    "static/media/iphone.svg": "/static/media/iphone.1bef255890bc0f493235428952fcb349.svg",
+    "static/media/GooglePlay.svg": "/static/media/GooglePlay.9786a2a5e606c09d26af68fb0b9bf576.svg",
+    "static/media/AppStore.svg": "/static/media/AppStore.df9622304a511571b2fea22b59f51d21.svg",
+    "static/media/Twitter.svg": "/static/media/Twitter.9559145a5855fe50ccfa308466a0c26b.svg",
+    "static/media/MoneyBack.svg": "/static/media/MoneyBack.c5d2135a84bf539b32c56fb4d293833f.svg",
+    "static/media/Services.svg": "/static/media/Services.2ceabf98a74a1021513150d7729ee284.svg",
+    "static/media/ServicesCustomerCare.svg": "/static/media/ServicesCustomerCare.cc6af1864a681fe8bb6aee5899a4effa.svg",
+    "static/media/Instagram.svg": "/static/media/Instagram.35af9a7746d339a78f1f428a964c6ab7.svg",
+    "static/media/Cart1.svg": "/static/media/Cart1.129492af3483862c0bec05fb264258b2.svg",
+    "static/media/Linkedln.svg": "/static/media/Linkedln.b37bc40385b859d44e0e272e507a5606.svg",
+    "index.html": "/index.html",
+    "static/media/Wishlist.svg": "/static/media/Wishlist.870acd3eb45abf7665f20eb4399fa868.svg",
+    "static/media/iconSend.svg": "/static/media/iconSend.a090ea3aebeca6005a0f5acef945ad04.svg",
+    "static/media/faceBook.svg": "/static/media/faceBook.90636f60afb9f3e2e04d8c82e843c216.svg",
+    "main.d869aa0a.css.map": "/static/css/main.d869aa0a.css.map",
+    "main.e733697e.js.map": "/static/js/main.e733697e.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.d869aa0a.css",
+    "static/js/main.e733697e.js"
+  ]
+}
