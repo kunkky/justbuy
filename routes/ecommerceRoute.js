@@ -68,7 +68,7 @@ router.get("/", (req, res) => {
     return res.status(200).send({
         responseCode: "00",
         responseMessage: "You are connected Ecommerce app api",
-        data: null
+        data: "no data Sent"
     });
 })
  
@@ -665,8 +665,6 @@ router.post('/login', bodyParse.json(), async (req, res) => {
 
     }
 })
-
-
 
 
 module.exports.ecommerceRoute = router;
