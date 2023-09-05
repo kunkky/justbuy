@@ -1,32 +1,20 @@
 const express = require("express");
-//models
+
 const { Users } = require('../model/user');
 const { Orders } = require('../model/order');
 const { Tokens } = require('../model/token');
-const { Products } = require('../model/product');
-const { Likes } = require('../model/like');
-const { Slides } = require('../model/slide');
-const { Categories } = require('../model/categorie');
-//models ends
-
+const { Products } = require('../model/product'); 
 const Joi = require("joi");
 const bodyParse = require("body-parser");
 const router = express.Router();
 const bcrypt = require('bcrypt');
 const jwt = require("jsonwebtoken");
-//auth Middleware
 const requireAuth = require("../middleware/authMiddleware");
-const requireAdminAuth = require("../middleware/AdminAuthMiddleware");
-//auth Middleware ends
-
-//Get secret keys fromenv
-const dotenv = require("dotenv");
-dotenv.config({ path: "config.env" })
-const signature = process.env.SIGNATURE || "dummyenvSIgnature"
 
 
 
 const createToken = (id) => {
+    let signature = "SoftamosChallenge_gadjjajcabdhcjadbajkvhcanhjc";
     const expDate = 3 * 24 * 60 * 60;
     return token = jwt.sign({ id }, signature, { expiresIn: expDate });
 
@@ -41,7 +29,6 @@ const addToken = async (token, userData) => {
         const newToken = new Tokens({
             user_id: userData._id,
             token: token,
-            userType: userData.userType,
         });
 
         // Save token to the database
@@ -52,16 +39,6 @@ const addToken = async (token, userData) => {
         throw error; // Propagate the error back to the caller
     }
 };
-
-//function that splits into array
-// Function to split a string with a comma if it contains a comma, otherwise return an empty array
-function splitter(inputString) {
-    if (inputString.includes(',')) {
-        return inputString.split(',').map(item => item.trim());
-    } else {
-        return [];
-    }
-}
 
 //default Get
 router.get("/", (req, res) => {
@@ -92,6 +69,8 @@ router.get('/logout', bodyParse.json(), async (req, res) => {
 
         });
     }
+
+
 })
 
 
@@ -125,8 +104,8 @@ router.get('/getOrderById', requireAuth, bodyParse.json(), async (req, res) => {
             });
 
         } catch (error) {
-            return res.status(400).send({
-                responseCode: "96",
+            return res.status(200).send({
+                responseCode: "00",
                 responseMessage: "Failed to retrieve " + _id,
                 data: null
 
@@ -136,53 +115,6 @@ router.get('/getOrderById', requireAuth, bodyParse.json(), async (req, res) => {
     }
 
 })
-
-//Get Category 
-router.get('/getAllCategory',  bodyParse.json(), async (req, res) => {
-        try {
-            const items = await Categories.find({ });
-
-            return res.status(200).send({
-                responseCode: "00",
-                responseMessage: "Categories Retrieved successfully",
-                data: items
-            });
-
-        } catch (error) {
-            return res.status(400).send({
-                responseCode: "96",
-                responseMessage: "Failed to retrieve Categories",
-                data: null
-
-            });
-        }
-
-})
-
-
-//Get slide 
-router.get('/getAllSlide', bodyParse.json(), async (req, res) => {
-    try {
-        const items = await Slides.find({ slideStatus: "show"});
- 
-        return res.status(200).send({
-            responseCode: "00",
-            responseMessage: "Slides Retrieved successfully",
-            data: items
-        });
-
-    } catch (error) {
-        return res.status(400).send({
-            responseCode: "96",
-            responseMessage: "Failed to retrieve Categories",
-            data: null
-
-        });
-    }
-
-})
-
-
 // getAllUserOrder
 router.get('/getAllUserOrder', requireAuth, bodyParse.json(), async (req, res) => {
     const Schema = Joi.object({
@@ -284,7 +216,67 @@ router.get('/FilterUserOrderByPrice', requireAuth, bodyParse.json(), async (req,
 })
 
 
-//createOrders Api
+// Get customer orders with pagination getOrderPaginated
+router.get('/getOrderPaginated', requireAuth, bodyParse.json(), async (req, res) => {
+    const Schema = Joi.object({
+        userId: Joi.string().required().min(3),
+        reqPage: Joi.string(),
+    });
+    //check error and return error
+    const { error } = Schema.validate(req.body);
+
+    if (error) {
+        return res.status(400).send({
+            responseCode: "96",
+            responseMessage: error.details[0].message,
+            data: null
+        });
+
+    }
+    else {
+        //check if id exists
+        let { userId, reqPage } = req.body;
+
+        //cehck if no page is sent by default
+        console.log(reqPage);
+        if (!reqPage){
+            page = 1;
+        
+        }
+        else{
+            page = parseInt(reqPage);
+        }
+        const perPage = 5;
+
+        try {
+            const orders = await Orders.find({ userId })
+                .skip((page - 1) * perPage)
+                .limit(perPage); //paginate
+
+
+            return res.status(200).send({
+                responseCode: "00",
+                responseMessage: "Order Retrieved successfully",
+                data: orders
+            });
+
+            res.status(200).json(orders);
+        } catch (error) {
+            return res.status(400).send({
+                responseCode: "96",
+                responseMessage: "Order can not be Retrieved",
+                data: null
+            });
+            
+        }
+
+    }
+})
+
+
+
+
+//createOrders Stack Api
 router.put('/createOrders', requireAuth, bodyParse.json(), async (req, res) => {
     const Schema = Joi.object({
         productId: Joi.string().min(3).max(20).required(),
@@ -335,7 +327,7 @@ router.put('/createOrders', requireAuth, bodyParse.json(), async (req, res) => {
 })
 
 
-//delete Order 
+//delete Post 
 router.delete('/deleteOrder', requireAuth, bodyParse.json(), async (req, res) => {
     const Schema = Joi.object({
         _id: Joi.string()
@@ -444,75 +436,14 @@ router.put('/updateOrderById', requireAuth, bodyParse.json(), async (req, res) =
     }
 })
 
-
-//createProduct Api
-router.put('/createProduct', requireAdminAuth, bodyParse.json(), async (req, res) => {
-    const Schema = Joi.object({
-        productName: Joi.string().min(3).max(20).required(),
-        productPrice: Joi.string().max(20).required(),
-        discountRate: Joi.string().max(20).required(),
-        productRating: Joi.string().max(20).required(),
-        productCategories: Joi.string().required(),
-        numberSold: Joi.number().max(20).required(),
-        productImages: Joi.string().required(),
-        productDetails: Joi.string().required(),
-        owner_Id: Joi.string().required(),
-        productColors: Joi.string().allow(''),
-        productSize: Joi.string().allow('').required(),
-        productBrand: Joi.string().required(),
-    });
-    //check error and return error
-    const { error } = Schema.validate(req.body);
-    if (error) {
-        return res.status(400).send({
-            responseCode: "96",
-            responseMessage: error.details[0].message,
-            data: null
-        });
-
-    }
-    const { productName, productPrice, discountRate, productRating, productCategories, numberSold, productImages, productDetails, owner_Id, productColors, productSize, productBrand  } = req.body;
-    //turn categories, images, colors and size to array
-    const productCategoriesArr = splitter(productCategories);
-    const productImagesArr = splitter(productImages);
-    const productColorsArr = splitter(productColors);
-    const productSizeArr = splitter(productSize);
-    try {
-            //save in database
-            const newProduct = new Products({
-                productName, productPrice, discountRate, productRating, productCategories: productCategoriesArr, numberSold, productImages: productImagesArr, productDetails, owner_Id, productColors: productColorsArr, productSize: productSizeArr, productBrand,
-                dateCreated: new Date().toJSON(), dateUpdated: new Date().toJSON()
-            });
-
-            await newProduct.save()
-            res.status(200).send({
-                responseCode: "00",
-                responseMessage: "new product created successfully",
-                data: newProduct
-            })
-
-
-    } catch (error) {
-        res.status(500).send({
-            responseCode: "96",
-            responseMessage: "Internal server error here" + error,
-            data: 'null' + error
-        })
-
-    }
-})
-
-
-
-
 //user registration
 router.put('/registeration', bodyParse.json(), async (req, res) => {
     const strongPasswordRegex = /(?=.*[A-Z])^(?=.*[a-z])^(?=.*[0-9])/;
-    const Schema = Joi.object({        
+    const Schema = Joi.object({
+        
         address: Joi.string().min(2).max(50).required(),
         email: Joi.string().min(2).max(20).required(),
         fullname: Joi.string().min(2).required(),
-        userType: Joi.string().required(),
         password: Joi.string().min(8).required().regex(strongPasswordRegex).messages({
             'string.pattern.base': 'Password must include at least one uppercase letter, one lowercase letter, and one digit',
         }),
@@ -528,7 +459,7 @@ router.put('/registeration', bodyParse.json(), async (req, res) => {
         });
 
     }
-    const { address, fullname, email, password, phone, userType } = req.body;
+    const { address, fullname, email, password, phone} = req.body;
 
     //hashe user password before sending to db
     const salt = await bcrypt.genSalt(10);
@@ -541,7 +472,7 @@ router.put('/registeration', bodyParse.json(), async (req, res) => {
             //save in database
             const newUser = new Users({
                 address, fullname, email
-                , hashedPassword, phone, userType,
+                , hashedPassword, phone,
                 dateCreated: new Date().toJSON(), dateUpdated: new Date().toJSON()
             });
 
@@ -596,6 +527,7 @@ router.post('/login', bodyParse.json(), async (req, res) => {
     });
     //check error and return error
     const { error } = Schema.validate(req.body);
+
     if (error) {
         return res.status(400).send({
             responseCode: "96",
@@ -605,7 +537,6 @@ router.post('/login', bodyParse.json(), async (req, res) => {
 
     }
     const { email, password } = req.body;
-    console.log(email);
     try {
         //check if data exist
         const existUser = await Users.findOne({ email });
