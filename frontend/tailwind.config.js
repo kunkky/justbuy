@@ -10,6 +10,7 @@ module.exports = {
         'justbuy-black':'#0C000F',
         'justbuy-brown': '#E07575',
         'justbuy-star': '#FFAD33',
+        'justbuy-white':'#F9F9F9',
         },
     },
   },
