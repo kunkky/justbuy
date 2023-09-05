@@ -10,9 +10,6 @@ import GooglePlay from './Assets/GooglePlay.svg'
 
 const Footer = () => {
   return (
-<<<<<<< HEAD
-      <div></div>
-=======
   <div>
     <div className='bg-justbuy-black lg:p-20 grid lg:grid-cols-5 md:grid-cols-2 grid-cols-1 lg:gap-20 p-5 gap-5'>
       <div className="flex flex-col gap-2 w-full text-justbuy-white">
@@ -86,7 +83,6 @@ const Footer = () => {
       </div>
       <div className="text-justbuy-white text-center bg-justbuy-black p-2 text-sm border-t  border-t-slate-900">&#169; Copyright Rimel 2022. All right reserved</div>
 </div>
->>>>>>> main
   )
 }
 
