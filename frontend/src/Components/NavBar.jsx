@@ -16,11 +16,15 @@ const NavBar = () => {
           ['Contact'],
           ['About'],
           ['Signup']
-        ].map(([title], index)=>(
+        ].map(([title], index) => (
           <li key={index} className='hover:border-b-2 hover:animate-[headShake_1s] hover:text-justbuy-purple border-justbuy-black cursor-pointer'> {title}</li>
+        {menuItems.map(([title])=>(
+          <li className='hover:border-b-2 hover:border-justbuy-purple hover:text-justbuy-purple hover:animate-[headShake_1s] border-justbuy-black cursor-pointer'> {title}</li>
+
         ))
         }
       </ul>
+
       <Search className=' w-[15rem] rounded-[4px]' placeholder='What are you looking for?' />
       <div className=' flex justify-center align-middle gap-[16px]'>
         <img src={Wishlist} className=' w-[32px] cursor-pointer' alt="Whishlists" />
