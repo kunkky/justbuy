@@ -68,7 +68,7 @@ router.get("/", (req, res) => {
     return res.status(200).send({
         responseCode: "00",
         responseMessage: "You are connected Ecommerce app api",
-        data: signature
+        data: null
     });
 })
  

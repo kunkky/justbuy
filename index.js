@@ -7,6 +7,7 @@ const cors = require('cors');
 const {ecommerceRoute} = require("./routes/ecommerceRoute");
 const jwt = require('jsonwebtoken');
 
+
 //handle cors for local work please remove on deployment
 app.use(cors(
     corsOptions = {
@@ -16,6 +17,18 @@ app.use(cors(
 ));
 app.use("/api/v1/", ecommerceRoute);
 
+//serve the front end
+app.use(express.static(path.join(__dirname, "./frontend/build")))
+app.get("*", function (_, res) {
+    res.sendFile(
+        path.join(__dirname, "./frontend/build/index.html"),
+        function (err) {
+            if (err) {
+                res.status(500).send(err);
+            }
+        }
+    )
+})
 
 //create my server
 dotenv.config({ path: "config.env" })
