@@ -1,18 +1,17 @@
-// import React, { useState, useEffect } from 'react';
-// // import axios from 'axios';
-// import { Spin } from 'antd';
-// import { Link } from 'react-router-dom'; // Import Link from react-router-dom
-// import rec from '../../Asset/rec.svg';
-// import leftArrow from '../../Asset/leftArrow.svg';
-// import rightArrow from '../../Asset/rightArrow.svg';
-// import phone from '../../Asset/CellPhone.svg';
-// import computers from '../../Asset/Computer.svg';
-// import smartWatch from '../../Asset/SmartWatch.svg';
-// import Camera from '../../Asset/Camera.svg';
-// import Headphone from '../../Asset/Headphone.svg';
-// import Gamepad from '../../Asset/Gamepad.svg';
-// import BestSelling from "../../Components/HomeSections/BestSelling";
 
+import React, { useState, useEffect } from 'react';
+import { Spin } from 'antd';
+import { Link } from 'react-router-dom'; // Import Link from react-router-dom
+import rec from '../../Asset/rec.svg';
+import leftArrow from '../../Asset/leftArrow.svg';
+import rightArrow from '../../Asset/rightArrow.svg';
+import phone from '../../Asset/CellPhone.svg';
+import computers from '../../Asset/Computer.svg';
+import smartWatch from '../../Asset/SmartWatch.svg';
+import Camera from '../../Asset/Camera.svg';
+import Headphone from '../../Asset/Headphone.svg';
+import Gamepad from '../../Asset/Gamepad.svg';
+import BestSelling from "../../Components/HomeSections/BestSelling";
 // const categoryData = [
 //   {
 //     productName: 'Phones',

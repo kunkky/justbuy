@@ -68,7 +68,7 @@ router.get("/", (req, res) => {
     return res.status(200).send({
         responseCode: "00",
         responseMessage: "You are connected Ecommerce app api",
-        data: "no data Sent"
+        data: null
     });
 })
  
@@ -665,6 +665,47 @@ router.post('/login', bodyParse.json(), async (req, res) => {
 
     }
 })
+
+
+router.get('/getAllProducts', bodyParse.json(), async (req, res) => {
+    try {
+        const items = await Products.find({});
+
+        return res.status(200).send({
+            responseCode: "00",
+            responseMessage: "Products Retrieved successfully",
+            data: items
+        });
+
+    } catch (error) {
+        return res.status(400).send({
+            responseCode: "96",
+            responseMessage: "Failed to retrieve Products",
+            data: null
+
+        });
+    }
+
+})
+router.get('/getBestSellingProducts', bodyParse.json(), async (req, res) => {
+    try {
+        const bestSelling = await Products.find({}).sort({ numberSold: -1 }).limit(4)
+        return res.status(200).send({
+            responseCode: "00",
+            responseMessage: "Best Selling Products Retrieved successfully",
+            data: bestSelling
+        });
+    } catch (error) {
+        return res.status(400).send({
+            responseCode: "96",
+            responseMessage: "Failed to retrieve Products" + error,
+            data: null
+        });
+        console.log(error);
+    }
+})
+
+
 
 
 module.exports.ecommerceRoute = router;
