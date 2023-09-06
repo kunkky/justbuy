@@ -3,15 +3,20 @@ module.exports = {
   content: [
     "./src/**/*.{js,jsx,ts,tsx}",
   ],
-    theme: {
+  theme: {
     extend: {
-        colors: {
-        'justbuy-purple': '#660B7F', 
-        'justbuy-black':'#0C000F',
+      colors: {
+        'justbuy-purple': '#660B7F',
+        'justbuy-black': '#0C000F',
         'justbuy-brown': '#E07575',
         'justbuy-star': '#FFAD33',
-        'justbuy-white':'#F9F9F9',
-        },
+      },
+      screens: {
+        'xl': {'min': '952px'},
+        'md': { 'max': '952px'},
+        'sm': {'max': '758px'}
+        
+      }
     },
   },
   plugins: [],
