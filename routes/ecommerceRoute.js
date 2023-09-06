@@ -689,10 +689,10 @@ router.get('/getAllProducts', bodyParse.json(), async (req, res) => {
 })
 router.get('/getBestSellingProducts', bodyParse.json(), async (req, res) => {
     try {
-        const bestSelling = await Products.find().sort({ numberSold: -1 })
+        const bestSelling = await Products.find({}).sort({ numberSold: -1 })
         return res.status(200).send({
             responseCode: "00",
-            responseMessage: " Best Selling Products Retrieved successfully",
+            responseMessage: "Best Selling Products Retrieved successfully",
             data: bestSelling
         });
     } catch (error) {
