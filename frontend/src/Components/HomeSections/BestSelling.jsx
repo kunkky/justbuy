@@ -18,7 +18,7 @@ const BestSelling = () => {
   useEffect(() => {
  
     axios
-      .get('https://fakestoreapi.com/products?limit=5')
+      .get('https://justbuy.onrender.com/api/v1/getBestSellingProducts')
       .then((response) => {
         setProducts(response.data);
         setLoading(false);
