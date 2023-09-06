@@ -32,8 +32,19 @@ const HomeSlider = () => {
   }
 
   return (
-    <div className='sm:hidden'>
-    <Swiper className='md:w-[700px] m-[3rem] w-[892px] h-[344px]'
+    <div className='sm:hidden flex p-[3rem]'>
+      <div className=' pl-[2rem] cursor-pointer leading-[2.4rem] h-[344px] border-r-[1px] w-[14rem] '>
+        <p>Woman's Fashion</p>
+        <p>Men's Fashion</p>
+        <p>Electronics</p>
+        <p>Home & Lifestyle</p>
+        <p>Medicine</p>
+        <p>Sports & Outdoodr</p>
+        <p>Baby's & Toys</p>
+        <p>Groceries & Pets</p>
+        <p>Health & Beauty</p>
+      </div>
+    <Swiper className='md:w-[700px]  w-[892px] h-[344px]'
       modules={[Pagination, Autoplay]}
       spaceBetween={40}
       slidesPerView={1}
