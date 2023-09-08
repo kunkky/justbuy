@@ -6,7 +6,7 @@ import days from '../../Asset/days timer.svg'
 import hour from '../../Asset/hour timer.svg'
 import min from '../../Asset/min timer.svg'
 import sec from '../../Asset/sec timer.svg'
-import BaseUrl from '../../BaseUrl';
+
 import { Spin } from 'antd';
 
 const BestSelling = () => {
