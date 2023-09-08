@@ -67,11 +67,18 @@ const BestSelling = () => {
          </div>
          </div>
 
-         <div className="text-center text-lg md:text-sm lg:text-sm font-semibold mb-2">
+    
+         <div className=" text-lg md:text-sm lg:text-sm font-semibold mb-2">
            {product.productName}
          </div>
-         <div> 
-         price : {product.productPrice}
+
+         <div className=' flex gap-3'> 
+         <div>
+          #{product.productPrice} 
+        </div>
+        <div>
+          {product.discountRate}
+        </div>
          </div>
          </div>
         
