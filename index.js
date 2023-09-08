@@ -31,6 +31,7 @@ app.get("*", function (_, res) {
 })
 
 //create my server
+dotenv.config()
 dotenv.config({ path: "config.env" })
 let PORT = process.env.PORT || 8080
 app.listen(PORT, () => {
