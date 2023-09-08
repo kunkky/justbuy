@@ -782,7 +782,7 @@ router.get("/getAllProducts", bodyParse.json(), async (req, res) => {
 router.get("/getBestSellingProducts", bodyParse.json(), async (req, res) => {
   try {
     
-    const bestSelling = await Products.find().sort({ numberSold: -1 }).limit(4).a
+    const bestSelling = await Products.find().sort({ numberSold: -1 }).limit(4)
     return res.status(200).send({
       responseCode: "00",
       responseMessage: "Best Selling Products Retrieved successfully",
