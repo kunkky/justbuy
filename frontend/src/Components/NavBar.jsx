@@ -5,6 +5,7 @@ import Cart from './Assets/Cart1.svg'
 import Hamburger from './Assets/menu.svg'
 import Menu from './Menu'
 import SearchIcon from './Assets/searchIcon.svg'
+import { Link } from 'react-router-dom'
 
 const NavBar = () => {
   const [showMenu, setShowMenu] = useState(false)
@@ -40,12 +41,12 @@ const NavBar = () => {
         <h1 className='font-bold text-[24px] '>Justbuy</h1>
         <ul className=' flex justify-evenly w-[20rem] md:hidden text-[16px] pt-[0.5rem]'>
           {[
-            ['Home'],
-            ['Contact'],
+            ['Home', '/'],
+            ['Contact', ''],
             ['About'],
-            ['Signup']
-          ].map(([title], index) => (
-            <li key={index} className='hover:border-b-2 hover:animate-[headShake_1s] hover:text-justbuy-purple border-justbuy-black cursor-pointer'> {title}</li>
+            ['Signup', '/signUp']
+          ].map(([title, url], index) => (
+            <li key={index} className='hover:border-b-2 hover:animate-[headShake_1s] hover:text-justbuy-purple border-justbuy-black cursor-pointer'><Link to={url}>{title}</Link></li>
           ))}
         </ul>
 
