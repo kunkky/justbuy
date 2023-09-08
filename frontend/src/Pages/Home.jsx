@@ -1,6 +1,6 @@
 import React from 'react'
 import NavBar from '../Components/NavBar'
-import Footer from '../Components/Footer'
+// import Footer from '../Components/Footer'
 import HomeSlider from '../Components/HomeSections/HomeSlider'
 import FlashSales from '../Components/HomeSections/FlashSales'
 import HomeCategory from '../Components/HomeSections/HomeCategory'
@@ -28,8 +28,8 @@ const Home = () => {
       <GeneralProduct/>
       {/* Dav Ends */}
       {/* Mr Id Start */}
-      <Advantage/>
-      <Footer/>
+      {/* <Advantage/> */}
+      {/* <Footer/> */}
       {/* Teepee Start */}
     </div>
   )

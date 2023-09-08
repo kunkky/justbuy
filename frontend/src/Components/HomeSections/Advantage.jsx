@@ -22,9 +22,6 @@ const serviceList=[
 
 ]
   return (
-<<<<<<< HEAD
-      <div></div>
-=======
       <div className='w-screen p-10 h-auto grid lg:grid-cols-3 grid-cols-1 gap-20 justify-center items-center lg:mb-32'>
         {
           serviceList.map((eachService, index)=>(
@@ -41,7 +38,6 @@ const serviceList=[
         
         
       </div>
->>>>>>> main
   )
 }
 

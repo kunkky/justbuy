@@ -6,21 +6,18 @@ import days from '../../Asset/days timer.svg'
 import hour from '../../Asset/hour timer.svg'
 import min from '../../Asset/min timer.svg'
 import sec from '../../Asset/sec timer.svg'
+import BaseUrl from '../../BaseUrl';
 import { Spin } from 'antd';
 
 const BestSelling = () => {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  // const getData = () => {
-  // };
-  
-  useEffect(() => {
- 
+  const getData = () => {
     axios
       .get('https://justbuy.onrender.com/api/v1/getBestSellingProducts')
       .then((response) => {
-        setProducts(response.data);
+        setProducts(response.data.data);
         setLoading(false);
         console.log(response.data);
       })
@@ -28,6 +25,11 @@ const BestSelling = () => {
         console.error('Error fetching data:', error);
         setLoading(false);
       });
+  };
+  
+  useEffect(() => {
+    getData()
+ 
   }, []);
 
   return (
@@ -53,19 +55,27 @@ const BestSelling = () => {
           <Spin size="large" />
         </div>
       ) : (
-        <div className="flex gap-2 md:gap-4 lg:gap-6 justify-center items-center pt-8 px-2 md:px-8 ">
-        {products.map((product) => (
+        <div className="flex  gap-2 md:gap-4 lg:gap-6 justify-center items-center pt-8 px-2 md:px-8 ">
+        {products.slice(0,4).map((product) => (
+          <div className='bg-opacity-70 bg-[#F5F5F5]  hover:bg-[#660B7F] hover:text-white transition duration-300 shadow-sm rounded border border-[#660B7F] w-[10rem] md:w-[12rem] flex flex-col cursor-pointer mb-2 hover:scale-105 ease-in-out hover:shadow-lg'>
          <div
          key={product.id}
-         className="bg-opacity-70 bg-[#F5F5F5] hover:bg-[#660B7F] hover:text-white transition duration-300 shadow-sm rounded border border-[#660B7F] w-full md:w-1/2 lg:w-1/3 xl:w-1/4 flex flex-col items-center cursor-pointer mb-2 hover:scale-105 ease-in-out hover:shadow-lg"
+         className=""
        >
          <div className="w-1/2 h-1/2 md:w-3/5 md:h-3/5 xl:w-4/5 xl:h-4/5">
-          
+          <img src={product.productImages} alt="" srcset="" />
          </div>
-         <div className="text-center text-lg md:text-xl lg:text-2xl font-semibold mb-2">
-           {product.category}
          </div>
-       </div>
+
+         <div className="text-center text-lg md:text-sm lg:text-sm font-semibold mb-2">
+           {product.productName}
+         </div>
+         <div> 
+         price : {product.productPrice}
+         </div>
+         </div>
+        
+       
        
         ))}
       </div>

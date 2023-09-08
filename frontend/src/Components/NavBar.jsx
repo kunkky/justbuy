@@ -5,9 +5,6 @@ import Cart from './Assets/Cart1.svg'
 import 'animate.css'
 const NavBar = () => {
   return (
-<<<<<<< HEAD
-    <div></div>
-=======
     <nav className=' flex justify-around pt-[1.5rem] h-[4rem] bg-white shadow-md'>
       <h1 className='font-bold text-[24px]'>Justbuy</h1>
       <ul className=' flex justify-evenly w-[20rem] text-[16px] pt-[0.5rem]'>
@@ -27,7 +24,6 @@ const NavBar = () => {
         <img src={Cart} alt="Cart" className=' w-[32px] cursor-pointer' />
       </div>
     </nav>
->>>>>>> main
   )
 }
 
