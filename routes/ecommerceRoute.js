@@ -327,7 +327,7 @@ router.put("/createOrders", requireAuth, bodyParse.json(), async (req, res) => {
   }
 });
 
-//createOrders Api
+//createCategory Api
 router.put("/createCategory", requireAuth, bodyParse.json(), async (req, res) => {
   const Schema = Joi.object({
     categoryName: Joi.string().max(20).required(),
