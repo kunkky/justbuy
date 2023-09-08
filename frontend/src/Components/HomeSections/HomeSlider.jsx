@@ -33,25 +33,11 @@ const HomeSlider = () => {
   }
 
   return (
-    <div className='sm:hidden flex p-[3rem]'>
-      <div className=' pl-[2rem] leading-[2.4rem] h-[344px] border-r-[1px] w-[14rem] '>
-      {[
-            [`Woman's Fashion`, '/'],
-            [`Men's Fashion`],
-            ['Electronics', '/electronics'],
-            ['Home & Lifestyle', '/'],
-            ['Medicine'],
-            ['Sports & Outdoor'],
-            [`Baby's & Toys`],
-            ['Groceries & Pets'],
-            ['Health & Beauty']
-
-          ].map(([title, url], index) => (
-            <p key={index} className=' hover:text-justbuy-brown cursor-pointer'><Link to={url}>{title}</Link></p>
-          ))}
-      </div>
-    <Swiper className='md:w-[700px]  w-[892px] h-[344px]'
-      modules={[Pagination, Autoplay]}
+<<<<<<< HEAD
+      <div></div>
+=======
+    <Swiper className=' m-[3rem] w-[892px] h-[344px]'
+      modules={[Pagination]}
       spaceBetween={40}
       slidesPerView={1}
       pagination={true}
@@ -59,7 +45,7 @@ const HomeSlider = () => {
     >
       {slideArr}
     </Swiper>
-    </div>
+>>>>>>> main
   )
 }
 
