@@ -327,6 +327,49 @@ router.put("/createOrders", requireAuth, bodyParse.json(), async (req, res) => {
   }
 });
 
+//createOrders Api
+router.put("/createCategory", requireAuth, bodyParse.json(), async (req, res) => {
+  const Schema = Joi.object({
+    categoryName: Joi.string().max(20).required(),
+  });
+  //check error and return error
+  const { error } = Schema.validate(req.body);
+  if (error) {
+    return res.status(400).send({
+      responseCode: "96",
+      responseMessage: error.details[0].message,
+      data: null,
+    });
+  }
+  const {
+    categoryName
+  } = req.body;
+
+  try {
+    //save in database
+
+    const newCategory = new Categories({
+      categoryName,
+      dateCreated: new Date().toJSON(),
+      dateUpdated: new Date().toJSON(),
+    });
+
+    await newCategory.save();
+    res.status(200).send({
+      responseCode: "00",
+      responseMessage: "User Category created successfully",
+      data: newCategory,
+    });
+  } catch (error) {
+    res.status(500).send({
+      responseCode: "96",
+      responseMessage: "Internal server error here" + error,
+      data: "null" + error,
+    });
+  }
+});
+
+
 //delete Order
 router.delete(
   "/deleteOrder",
