@@ -33,9 +33,6 @@ const HomeSlider = () => {
   }
 
   return (
-<<<<<<< HEAD
-      <div></div>
-=======
     <Swiper className=' m-[3rem] w-[892px] h-[344px]'
       modules={[Pagination]}
       spaceBetween={40}
@@ -45,7 +42,6 @@ const HomeSlider = () => {
     >
       {slideArr}
     </Swiper>
->>>>>>> main
   )
 }
 
