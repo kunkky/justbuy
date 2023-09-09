@@ -38,7 +38,7 @@ const FlashSales = () => {
               <img src={image} className='m-auto max-w-[127px] h-[127px]' alt="" />
             </div>
             <p className=' text-[0.8rem]'>{name} <br />
-              {price} <s  className=' opacity-50'>{slash}</s>
+              {price} <s className=' opacity-50'>{slash}</s>
             </p>
             <span className=' flex'>
               <img src={Vector} alt="" />
