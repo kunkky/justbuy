@@ -8,25 +8,12 @@ import min from '../../Asset/min timer.svg'
 import sec from '../../Asset/sec timer.svg'
 
 import { Spin } from 'antd';
-// import React, { useState, useEffect } from 'react';
-// import axios frzom 'axios';
-// import rec from '../../Asset/rec.svg';
-// import jam from '../../Asset/jbl.svg'
-// import days from '../../Asset/days timer.svg'
-// import hour from '../../Asset/hour timer.svg'
-// import min from '../../Asset/min timer.svg'
-// import sec from '../../Asset/sec timer.svg'
-// import { Spin } from 'antd';
 
-// const BestSelling = () => {
-//   const [products, setProducts] = useState([]);
-//   const [loading, setLoading] = useState(true);
+const BestSelling = () => {
+  const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
 
-  // const getData = () => {
-  // };
-  
-  useEffect(() => {
- 
+  const getData = () => {
     axios
       .get('https://justbuy.onrender.com/api/v1/getBestSellingProducts')
       .then((response) => {
@@ -52,16 +39,16 @@ import { Spin } from 'antd';
         <h1 className="text-xl sm:text-xl font-semibold">This Month's Best Sellers</h1>
       </div>
 
-//       <div className="flex items-center justify-between px-4 md:px-8">
-//         <div>
-//           <h1 className="text-xl sm:text-2xl font-bold">Best Selling Products</h1>
-//         </div>
-//         <div className="flex gap-3 pr-3">
-//           <button className="bg-[#660B7F] hover:bg-[#4A0679] w-24 h-8 rounded-md text-white shadow-lg transition duration-300 ease-in-out">
-//             View All
-//           </button>
-//         </div>
-//       </div>
+      <div className="flex items-center justify-between px-4 md:px-8">
+        <div>
+          <h1 className="text-xl sm:text-2xl font-bold">Best Selling Products</h1>
+        </div>
+        <div className="flex gap-3 pr-3">
+          <button className="bg-[#660B7F] hover:bg-[#4A0679] w-24 h-8 rounded-md text-white shadow-lg transition duration-300 ease-in-out">
+            View All
+          </button>
+        </div>
+      </div>
 
       {loading ? (
         <div className="flex items-center justify-center mt-4">
@@ -80,11 +67,18 @@ import { Spin } from 'antd';
          </div>
          </div>
 
-         <div className="text-center text-lg md:text-sm lg:text-sm font-semibold mb-2">
+    
+         <div className=" text-lg md:text-sm lg:text-sm font-semibold mb-2">
            {product.productName}
          </div>
-         <div> 
-         price : {product.productPrice}
+
+         <div className=' flex gap-3'> 
+         <div>
+          #{product.productPrice} 
+        </div>
+        <div>
+          {product.discountRate}
+        </div>
          </div>
          </div>
         
@@ -141,8 +135,8 @@ import { Spin } from 'antd';
 
 
 
-//     </div>
-//   );
-// };
+    </div>
+  );
+};
 
-// export default BestSelling;
+export default BestSelling;
