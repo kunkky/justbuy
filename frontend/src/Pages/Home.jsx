@@ -6,7 +6,7 @@ import FlashSales from '../Components/HomeSections/FlashSales'
 import HomeCategory from '../Components/HomeSections/HomeCategory'
 import GeneralProduct from '../Components/HomeSections/GeneralProduct'
 // import BestSelling from '../Components/HomeSections/BestSelling'
-import Advantage from '../Components/HomeSections/Advantage'
+// import Advantage from '../Components/HomeSections/Advantage'
 
 const Home = () => {
   return (
@@ -22,9 +22,9 @@ const Home = () => {
       <FlashSales/>
       {/* Teepee Ends */}
       {/* Dav Start */}
-{/* 
-      <BestSelling/> */}
+
       <HomeCategory/>
+      {/* <BestSelling/>  */}
       <GeneralProduct/>
       {/* Dav Ends */}
       {/* Mr Id Start */}

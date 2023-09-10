@@ -50,7 +50,7 @@ const HomeCategory = () => {
   const [loading, setLoading] = useState(false);
 
   return (
-    <div className="h-screen">
+    <div className="h-[100svh]">
       {loading ? (
         <Spin size="large" className="flex items-center justify-center" />
       ) : (
