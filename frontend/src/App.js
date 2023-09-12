@@ -6,7 +6,7 @@ import Signin from './Pages/Signin'
 import Profile from './Pages/Profile'
 import ErrorPage from './Pages/ErrorPage'
 import Dashboard from './Pages/Dashboard'
-import AllProducts from './AllProducts'
+import AllProducts from './Pages/AllProducts'
 
 
 //protected route for authentication
