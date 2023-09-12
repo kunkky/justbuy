@@ -1,7 +1,13 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
-import rec from "../../Asset/rec.svg";
-import { Spin } from "antd";
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import rec from '../../Asset/rec.svg';
+import jam from '../../Asset/jbl.svg'
+import days from '../../Asset/days timer.svg'
+import hour from '../../Asset/hour timer.svg'
+import min from '../../Asset/min timer.svg'
+import sec from '../../Asset/sec timer.svg'
+
+import { Spin } from 'antd';
 
 const BestSelling = () => {
   const [products, setProducts] = useState([]);
@@ -34,18 +40,16 @@ const BestSelling = () => {
         </h1>
       </div>
 
-      <div className="flex items-center justify-between px-4 md:px-8">
-        <div>
-          <h1 className="text-lg sm:text-2xl font-bold">
-            Best Selling Products
-          </h1>
-        </div>
-        <div className="flex gap-3 pr-3">
-          <button className="bg-[#660B7F] hover:bg-[#4A0679] w-24 h-8 rounded-md text-white shadow-lg transition duration-300 ease-in-out">
-            View All
-          </button>
-        </div>
-      </div>
+//       <div className="flex items-center justify-between px-4 md:px-8">
+//         <div>
+//           <h1 className="text-xl sm:text-2xl font-bold">Best Selling Products</h1>
+//         </div>
+//         <div className="flex gap-3 pr-3">
+//           <button className="bg-[#660B7F] hover:bg-[#4A0679] w-24 h-8 rounded-md text-white shadow-lg transition duration-300 ease-in-out">
+//             View All
+//           </button>
+//         </div>
+//       </div>
 
       {loading ? (
         <div className="flex items-center justify-center mt-4">
@@ -62,20 +66,33 @@ const BestSelling = () => {
                 <img src={product.productImages} alt="" srcSet="" />
               </div>
 
-              <div className="text-lg md:text-sm lg:text-sm font-semibold mb-2">
-                {product.productName}
-              </div>
-
-              <div className="flex gap-3">
-                <div>#{product.productPrice}</div>
-                <div>{product.discountRate}</div>
-              </div>
-            </div>
-          ))}
-        </div>
+         <div className="text-center text-lg md:text-sm lg:text-sm font-semibold mb-2">
+           {product.productName}
+         </div>
+         <div> 
+         price : {product.productPrice}
+         </div>
+         </div>
+        
+       
+       
+        ))}
+      </div>
+      
       )}
     </div>
-  );
-};
+    <div className="md:w-1/2">
+      <img src={jam} alt="Music Jam" className="mx-auto max-w-full" />
+    </div>
+  </section>
+ </div>
+
+
+
+
+
+//     </div>
+//   );
+// };
 
 export default BestSelling;
