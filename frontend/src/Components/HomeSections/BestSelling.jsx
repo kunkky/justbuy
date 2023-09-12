@@ -62,17 +62,26 @@ const BestSelling = () => {
                 <img src={product.productImages} alt="" srcSet="" />
               </div>
 
-              <div className="text-lg md:text-sm lg:text-sm font-semibold mb-2">
-                {product.productName}
-              </div>
+    
+         <div className=" text-lg md:text-sm lg:text-sm font-semibold mb-2">
+           {product.productName}
+         </div>
 
-              <div className="flex gap-3">
-                <div>#{product.productPrice}</div>
-                <div>{product.discountRate}</div>
-              </div>
-            </div>
-          ))}
+         <div className=' flex gap-3'> 
+         <div>
+          #{product.productPrice} 
         </div>
+        <div>
+          {product.discountRate}
+        </div>
+         </div>
+         </div>
+        
+       
+       
+        ))}
+      </div>
+      
       )}
     </div>
   );

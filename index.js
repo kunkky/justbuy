@@ -11,7 +11,7 @@ const jwt = require('jsonwebtoken');
 //handle cors for local work please remove on deployment
 app.use(cors(
     corsOptions = {
-        origin: 'http://localhost:3000', // Change to your React app's origin 
+        origin: ['http://localhost:3000',"https://justbuy.onrender.com"], // Change to your React app's origin 
         credentials: true,
     }
 ));
@@ -31,6 +31,7 @@ app.get("*", function (_, res) {
 })
 
 //create my server
+dotenv.config()
 dotenv.config({ path: "config.env" })
 let PORT = process.env.PORT || 8080
 app.listen(PORT, () => {

@@ -10,7 +10,7 @@ import GeneralProduct from '../Components/HomeSections/GeneralProduct'
 
 const Home = () => {
   return (
-    <div>
+    <div className=' overflow-x-hidden'>
     {/* Teepee Start
       <h1 className='bg-justbuy-purple text-white'>Use bg-justbuy-purple for our purple variant</h1>
       <h1 className='bg-justbuy-black text-white'>Use bg-justbuy-black for our black variant</h1>
@@ -22,9 +22,9 @@ const Home = () => {
       <FlashSales/>
       {/* Teepee Ends */}
       {/* Dav Start */}
-
-      <HomeCategory/>
-      {/* <BestSelling/>  */}
+{/* 
+      <BestSelling/> */}
+      {/* <HomeCategory/> */}
       <GeneralProduct/>
       {/* Dav Ends */}
       {/* Mr Id Start */}
