@@ -6,6 +6,7 @@ import Signin from './Pages/Signin'
 import Profile from './Pages/Profile'
 import ErrorPage from './Pages/ErrorPage'
 import Dashboard from './Pages/Dashboard'
+import AllProducts from './Pages/AllProducts'
 
 
 //protected route for authentication
@@ -22,6 +23,7 @@ const App = () => {
   return (
     <Routes>
       <Route path='/' element={<Home />}></Route>
+      <Route path='/allProducts' element={<AllProducts/>}></Route>
       <Route path='/signUp' element={<SignUp />}></Route>
       <Route path='/signin' element={<Signin />}></Route>
       {/* Protected routes */}
