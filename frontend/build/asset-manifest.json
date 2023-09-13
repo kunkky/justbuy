@@ -1,9 +1,9 @@
 {
   "files": {
     "main.css": "/static/css/main.857e96b4.css",
-    "main.js": "/static/js/main.ad710bb9.js",
-    "static/media/jbl.svg": "/static/media/jbl.3d2a9b2d6b02c5c59cf7de26d4c1eb0a.svg",
+    "main.js": "/static/js/main.b876f9ad.js",
     "static/media/pad.svg": "/static/media/pad.b62b77458386ab11113a76c7320eb05a.svg",
+    "static/media/speaker.png": "/static/media/speaker.8f06b370913e3eaff945.png",
     "static/media/chair.svg": "/static/media/chair.7d2f1b6b95d20246a89ba34a4c3be3c7.svg",
     "static/media/tv.svg": "/static/media/tv.31a7c2997edc85263c954ed4e63ffb23.svg",
     "static/media/iphone.svg": "/static/media/iphone.1bef255890bc0f493235428952fcb349.svg",
@@ -40,10 +40,10 @@
     "static/media/menu.svg": "/static/media/menu.16ceda0d0b385129af06cfee61f2d30d.svg",
     "static/media/rec.svg": "/static/media/rec.3d59395d6d286d0b65b85032cbdd7a06.svg",
     "main.857e96b4.css.map": "/static/css/main.857e96b4.css.map",
-    "main.ad710bb9.js.map": "/static/js/main.ad710bb9.js.map"
+    "main.b876f9ad.js.map": "/static/js/main.b876f9ad.js.map"
   },
   "entrypoints": [
     "static/css/main.857e96b4.css",
-    "static/js/main.ad710bb9.js"
+    "static/js/main.b876f9ad.js"
   ]
 }

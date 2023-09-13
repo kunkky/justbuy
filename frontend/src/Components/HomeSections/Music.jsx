@@ -1,5 +1,5 @@
 import React from 'react'
-import jam from "../../Asset/jbl.svg";
+import jam from "../../Components/Assets/speaker.png";
 import days from "../../Asset/days timer.svg";
 import hour from "../../Asset/hour timer.svg";
 import min from "../../Asset/min timer.svg";

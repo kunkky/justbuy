@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import rec from '../../Asset/rec.svg';
-import jam from '../../Asset/jbl.svg'
+import jam from '../../Components/Assets/speaker.png'
 import days from '../../Asset/days timer.svg'
 import hour from '../../Asset/hour timer.svg'
 import min from '../../Asset/min timer.svg'
