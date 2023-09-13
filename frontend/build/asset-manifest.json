@@ -1,9 +1,13 @@
 {
   "files": {
-    "main.css": "/static/css/main.bc99de75.css",
-    "main.js": "/static/js/main.606627a7.js",
+    "main.css": "/static/css/main.857e96b4.css",
+    "main.js": "/static/js/main.ad710bb9.js",
     "static/media/jbl.svg": "/static/media/jbl.3d2a9b2d6b02c5c59cf7de26d4c1eb0a.svg",
+    "static/media/pad.svg": "/static/media/pad.b62b77458386ab11113a76c7320eb05a.svg",
+    "static/media/chair.svg": "/static/media/chair.7d2f1b6b95d20246a89ba34a4c3be3c7.svg",
+    "static/media/tv.svg": "/static/media/tv.31a7c2997edc85263c954ed4e63ffb23.svg",
     "static/media/iphone.svg": "/static/media/iphone.1bef255890bc0f493235428952fcb349.svg",
+    "static/media/keyboard.svg": "/static/media/keyboard.1d8327742d0e9ca98d3e928b03b1ce26.svg",
     "static/media/GooglePlay.svg": "/static/media/GooglePlay.036661d01229317639a661e136bcd5fd.svg",
     "static/media/AppStore.svg": "/static/media/AppStore.1c6a61b2e547a3d3983bf6a82f20b08c.svg",
     "static/media/sec timer.svg": "/static/media/sec timer.9b414df40923d155e4a2f47f6c5e7398.svg",
@@ -22,7 +26,9 @@
     "static/media/Computer.svg": "/static/media/Computer.c45181f85f84550d216c378e0caa16ba.svg",
     "static/media/Gamepad.svg": "/static/media/Gamepad.26d3bcdb92a975443a5c760e53a838b0.svg",
     "static/media/CellPhone.svg": "/static/media/CellPhone.fc84ae52c55270f0b613d67e38c157ad.svg",
+    "static/media/Vector.svg": "/static/media/Vector.5a071743493c9cb2e8676245129544cd.svg",
     "static/media/Linkedln.svg": "/static/media/Linkedln.4681404eec330df6e6935a74bcf6d1f7.svg",
+    "static/media/Group.svg": "/static/media/Group.08ab1ceca1089c8255db2d283e4f38ec.svg",
     "index.html": "/index.html",
     "static/media/searchIcon.svg": "/static/media/searchIcon.7c716dc1b93c0453a43e00af0be72e78.svg",
     "static/media/Wishlist.svg": "/static/media/Wishlist.870acd3eb45abf7665f20eb4399fa868.svg",
@@ -33,11 +39,11 @@
     "static/media/leftArrow.svg": "/static/media/leftArrow.c6452270e22402ff6755789ba89e6316.svg",
     "static/media/menu.svg": "/static/media/menu.16ceda0d0b385129af06cfee61f2d30d.svg",
     "static/media/rec.svg": "/static/media/rec.3d59395d6d286d0b65b85032cbdd7a06.svg",
-    "main.bc99de75.css.map": "/static/css/main.bc99de75.css.map",
-    "main.606627a7.js.map": "/static/js/main.606627a7.js.map"
+    "main.857e96b4.css.map": "/static/css/main.857e96b4.css.map",
+    "main.ad710bb9.js.map": "/static/js/main.ad710bb9.js.map"
   },
   "entrypoints": [
-    "static/css/main.bc99de75.css",
-    "static/js/main.606627a7.js"
+    "static/css/main.857e96b4.css",
+    "static/js/main.ad710bb9.js"
   ]
 }

@@ -11,7 +11,7 @@ import GooglePlay from './Assets/GooglePlay.svg'
 const Footer = () => {
   return (
   <div>
-    <div className='bg-justbuy-black lg:p-20 grid lg:grid-cols-5 md:grid-cols-2 grid-cols-1 lg:gap-20 p-5 gap-5'>
+    <div className='bg-justbuy-black lg:p-20 grid lg:grid-cols-5 md:grid-cols-2 grid-cols-1 lg:gap-20 p-5 gap-5 text-white'>
       <div className="flex flex-col gap-2 w-full text-justbuy-white">
         <h1 className='text-justbuy-white font-bold mb-3'>JustBuy</h1>
           <div className="text-sm">Subscribe</div>
@@ -81,7 +81,7 @@ const Footer = () => {
         </div>
       </div>
       </div>
-      <div className="text-justbuy-white text-center bg-justbuy-black p-2 text-sm border-t  border-t-slate-900">&#169; Copyright Rimel 2022. All right reserved</div>
+      <div className="text-justbuy-white text-center bg-justbuy-black p-2 text-sm border-t  border-t-slate-900 text-slate-400">&#169; Copyright 2023. All right reserved</div>
 </div>
   )
 }
