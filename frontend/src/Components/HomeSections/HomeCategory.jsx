@@ -49,16 +49,16 @@ const HomeCategory = () => {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(false);
 
-//   return (
-//     <div className="h-screen">
-//       {loading ? (
-//         <Spin size="large" className="flex items-center justify-center" />
-//       ) : (
-//         <>
-//           <div className="flex flex-col md:flex-row gap-2 md:gap-2 items-center text-[#660B7F] px-4 md:px-8">
-//             <img src={rec} alt="" className="md:mr-2" />
-//             <h1 className="text-xl sm:text-xl">Categories</h1>
-//           </div>
+  return (
+    <div className="h-screen">
+      {loading ? (
+        <Spin size="large" className="flex items-center justify-center" />
+      ) : (
+        <>
+          <div className="flex flex-col md:flex-row gap-2 md:gap-2 items-center text-[#660B7F] px-4 md:px-8">
+            <img src={rec} alt="" className="md:mr-2" />
+            <h1 className="text-xl sm:text-xl">Categories</h1>
+          </div>
 
           <div className="flex items-center justify-between px-4 md:px-8">
             <div>

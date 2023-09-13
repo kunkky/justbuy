@@ -15,7 +15,7 @@ const BestSelling = () => {
 
   const getData = () => {
     axios
-      .get("https://justbuy.onrender.com/api/v1/getBestSellingProducts")
+      .get("https: justbuy.onrender.com/api/v1/getBestSellingProducts")
       .then((response) => {
         setProducts(response.data.data);
         setLoading(false);
@@ -32,6 +32,7 @@ const BestSelling = () => {
   }, []);
 
   return (
+<>
     <div className="h-screen">
       <div className="flex flex-col md:flex-row gap-2 md:gap-2 items-center text-[#660B7F] px-4 md:px-8">
         <img src={rec} alt="" className="md:mr-2" />
@@ -40,16 +41,16 @@ const BestSelling = () => {
         </h1>
       </div>
 
-//       <div className="flex items-center justify-between px-4 md:px-8">
-//         <div>
-//           <h1 className="text-xl sm:text-2xl font-bold">Best Selling Products</h1>
-//         </div>
-//         <div className="flex gap-3 pr-3">
-//           <button className="bg-[#660B7F] hover:bg-[#4A0679] w-24 h-8 rounded-md text-white shadow-lg transition duration-300 ease-in-out">
-//             View All
-//           </button>
-//         </div>
-//       </div>
+       <div className="flex items-center justify-between px-4 md:px-8">
+         <div>
+           <h1 className="text-xl sm:text-2xl font-bold">Best Selling Products</h1>
+         </div>
+         <div className="flex gap-3 pr-3">
+            <button className="bg-[#660B7F] hover:bg-[#4A0679] w-24 h-8 rounded-md text-white shadow-lg transition duration-300 ease-in-out">
+              View All
+            </button>
+          </div>
+        </div>
 
       {loading ? (
         <div className="flex items-center justify-center mt-4">
@@ -84,15 +85,12 @@ const BestSelling = () => {
     <div className="md:w-1/2">
       <img src={jam} alt="Music Jam" className="mx-auto max-w-full" />
     </div>
-  </section>
- </div>
 
 
 
 
-
-//     </div>
-//   );
-// };
+     </>
+    );
+  };
 
 export default BestSelling;
