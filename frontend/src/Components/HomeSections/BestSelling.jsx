@@ -1,7 +1,13 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
-import rec from "../../Asset/rec.svg";
-import { Spin } from "antd";
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import rec from '../../Asset/rec.svg';
+import jam from '../../Components/Assets/speaker.png'
+// import days from '../../Asset/days timer.svg'
+// import hour from '../../Asset/hour timer.svg'
+// import min from '../../Asset/min timer.svg'
+// import sec from '../../Asset/sec timer.svg'
+
+import { Spin } from 'antd';
 
 const BestSelling = () => {
   const [products, setProducts] = useState([]);
@@ -9,7 +15,7 @@ const BestSelling = () => {
 
   const getData = () => {
     axios
-      .get("https://justbuy.onrender.com/api/v1/getBestSellingProducts")
+      .get("https: justbuy.onrender.com/api/v1/getBestSellingProducts")
       .then((response) => {
         setProducts(response.data.data);
         setLoading(false);
@@ -26,6 +32,7 @@ const BestSelling = () => {
   }, []);
 
   return (
+<>
     <div className="h-screen">
       <div className="flex flex-col md:flex-row gap-2 md:gap-2 items-center text-[#660B7F] px-4 md:px-8">
         <img src={rec} alt="" className="md:mr-2" />
@@ -34,18 +41,16 @@ const BestSelling = () => {
         </h1>
       </div>
 
-      <div className="flex items-center justify-between px-4 md:px-8">
-        <div>
-          <h1 className="text-lg sm:text-2xl font-bold">
-            Best Selling Products
-          </h1>
+       <div className="flex items-center justify-between px-4 md:px-8">
+         <div>
+           <h1 className="text-xl sm:text-2xl font-bold">Best Selling Products</h1>
+         </div>
+         <div className="flex gap-3 pr-3">
+            <button className="bg-[#660B7F] hover:bg-[#4A0679] w-24 h-8 rounded-md text-white shadow-lg transition duration-300 ease-in-out">
+              View All
+            </button>
+          </div>
         </div>
-        <div className="flex gap-3 pr-3">
-          <button className="bg-[#660B7F] hover:bg-[#4A0679] w-24 h-8 rounded-md text-white shadow-lg transition duration-300 ease-in-out">
-            View All
-          </button>
-        </div>
-      </div>
 
       {loading ? (
         <div className="flex items-center justify-center mt-4">
@@ -62,18 +67,11 @@ const BestSelling = () => {
                 <img src={product.productImages} alt="" srcSet="" />
               </div>
 
-    
-         <div className=" text-lg md:text-sm lg:text-sm font-semibold mb-2">
+         <div className="text-center text-lg md:text-sm lg:text-sm font-semibold mb-2">
            {product.productName}
          </div>
-
-         <div className=' flex gap-3'> 
-         <div>
-          #{product.productPrice} 
-        </div>
-        <div>
-          {product.discountRate}
-        </div>
+         <div> 
+         price : {product.productPrice}
          </div>
          </div>
         
@@ -84,7 +82,15 @@ const BestSelling = () => {
       
       )}
     </div>
-  );
-};
+    <div className="md:w-1/2">
+      <img src={jam} alt="Music Jam" className="mx-auto max-w-full" />
+    </div>
+
+
+
+
+     </>
+    );
+  };
 
 export default BestSelling;

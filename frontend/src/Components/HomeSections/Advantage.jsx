@@ -22,7 +22,7 @@ const serviceList=[
 
 ]
   return (
-      <div className='w-screen p-10 h-auto grid lg:grid-cols-3 grid-cols-1 gap-20 justify-center items-center lg:mb-32'>
+      <div className='w-screen p-10 h-auto grid lg:grid-cols-3 grid-cols-1 gap-20 justify-center items-center lg:my-32'>
         {
           serviceList.map((eachService, index)=>(
             <div className="w-full flex flex-col gap-2 justify-center items-center" key={index}>
