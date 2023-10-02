@@ -10,7 +10,7 @@ import GooglePlay from './Assets/GooglePlay.svg'
 
 const Footer = () => {
   return (
-  <div>
+  <div className=' text-white'>
     <div className='bg-justbuy-black lg:p-20 grid lg:grid-cols-5 md:grid-cols-2 grid-cols-1 lg:gap-20 p-5 gap-5 text-white'>
       <div className="flex flex-col gap-2 w-full text-justbuy-white">
         <h1 className='text-justbuy-white font-bold mb-3'>JustBuy</h1>
